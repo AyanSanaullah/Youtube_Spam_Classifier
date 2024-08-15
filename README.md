@@ -1,6 +1,6 @@
-# YouTube Comment Scraper and Spam Detection
+# YouTube Spam, Hate, and Sentiment Classifier
 
-This repository contains two Jupyter notebooks and accompanying datasets designed to scrape YouTube comments and detect spam comments using machine learning.
+This repository contains two Jupyter notebooks and accompanying datasets designed to scrape YouTube comments and detect spam, classify hate speech, and analyze sentiment in comments using machine learning.
 
 ## Table of Contents
 
@@ -16,83 +16,92 @@ This repository contains two Jupyter notebooks and accompanying datasets designe
 
 ## Project Overview
 
-### Spam Detection Model
-The `spam-comments-detection-on-youtube.ipynb` notebook trains a machine learning model to detect spam in YouTube comments. It uses a dataset of labeled comments and applies feature extraction and model training using word embeddings and stylometric features. 
+### Spam, Hate Speech, and Sentiment Detection Model
+The `spam-comments-detection-on-youtube.ipynb` notebook trains a machine learning model to classify YouTube comments into multiple categories:
+- **Spam Detection:** Identifies spam comments.
+- **Hate Speech Detection:** Flags comments containing hate speech.
+- **Sentiment Analysis:** Classifies comments as positive, negative, or neutral.
+
+It uses a dataset of labeled comments and applies feature extraction and model training using word embeddings, stylometric features, and various machine learning algorithms.
 
 ### YouTube Comment Scraper
-The `youtube_comment_web_scraper.ipynb` notebook scrapes YouTube comments from specified videos or playlists. It uses the `youtube-comment-downloader` library to extract comments and saves them in a structured format (CSV). This data can be used to detect spam comments or perform other NLP tasks.
+The `youtube_comment_web_scraper.ipynb` notebook scrapes YouTube comments from specified videos or playlists. It uses the `youtube-comment-downloader` library to extract comments and saves them in a structured format (CSV). While optional, this tool allows users to scrape their own datasets for further spam, hate speech, and sentiment analysis.
 
 ## Datasets
 
-1. Training Data: 
-   - Five Excel datasets downloaded from Kaggle [Images Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/images). These datasets are pre-processed and used for training the spam detection model.
+1. **Training Data:** 
+   - Five Excel datasets downloaded from Kaggle's [Images Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/images). These datasets are pre-processed and used for training the spam, hate speech, and sentiment detection models.
    
-2. Scraped Data:
-   - An Excel file containing YouTube comments, scraped using the YouTube Comment Scraper notebook.
+2. **Scraped Data (Optional):**
+   - You may scrape your own YouTube comments using the YouTube Comment Scraper notebook. The scraped data can be used as additional input for classification tasks.
 
 ## Installation and Setup
 
 To set up this project, follow these steps:
 
 1. Clone this repository:
-    bash
-    git clone https://github.com/yourusername/repository-name.git
-    cd repository-name
- 
+    ```bash
+    git clone https://github.com/AyanSan/Youtube_Spam_Classifier
+    cd Youtube_Spam_Classifier
+    ```
 
 2. Install the required dependencies:
-    bash
+    ```bash
     pip install -r requirements.txt
-
+    ```
 
 3. Install Jupyter notebook or VS Code with the Jupyter extension.
 
-4. Set up Kaggle API credentials (if necessary) to download datasets.
+4. (Optional) Set up Kaggle API credentials to download datasets.
 
 ## File Structure
 
-
+```plaintext
 ├── datasets/
 │   ├── kaggle_dataset_1.xlsx
 │   ├── kaggle_dataset_2.xlsx
 │   ├── kaggle_dataset_3.xlsx
 │   ├── kaggle_dataset_4.xlsx
 │   ├── kaggle_dataset_5.xlsx
-│   ├── scraped_comments.xlsx
+│   ├── scraped_comments.xlsx (optional)
 ├── notebooks/
 │   ├── youtube_comment_web_scraper.ipynb
 │   ├── spam-comments-detection-on-youtube.ipynb
 ├── README.md
 └── requirements.txt
+```
 
 ## Usage
 
-### 1. Scraping YouTube Comments
+### 1. Scraping YouTube Comments (Optional)
 
 1. Open the `youtube_comment_web_scraper.ipynb` notebook.
 2. Provide the video URLs or playlist URLs as input.
 3. Run the notebook to scrape comments.
-4. The comments will be saved in a CSV or Excel file for later use in training.
+4. The comments will be saved in a CSV or Excel file.
 
-### 2. Training the Spam Detection Model
+### 2. Training the Spam, Hate Speech, and Sentiment Detection Model
 
 1. Ensure the datasets are correctly placed in the `datasets/` folder.
 2. Open the `spam-comments-detection-on-youtube.ipynb` notebook.
-3. Run the notebook to train the model. The training uses the datasets from Kaggle along with the scraped comments.
+3. Run the notebook to train the model. The training uses the Kaggle datasets and any additional scraped data.
 4. Evaluate the model performance and visualize results.
 
 ## Model Training
 
-The spam detection model uses a combination of NLP techniques and machine learning algorithms. The model is trained on pre-labeled Kaggle datasets along with the scraped YouTube comments. The following steps are involved in training:
+The detection model uses a combination of natural language processing (NLP) techniques and machine learning algorithms. The following steps are involved in training:
 
 - Preprocessing comments (cleaning, tokenization)
 - Feature extraction (word embeddings, stylometric features)
 - Model training using algorithms like Logistic Regression, Random Forest, etc.
-- Evaluation using metrics like accuracy.
+- Multi-task learning for spam detection, hate speech detection, and sentiment classification.
+- Evaluation using metrics like accuracy, precision, recall, and F1-score.
 
 ## Results
 
-- Accuracy: 89%
+- **Spam Detection Accuracy:** 89%
+- **Hate Speech Detection Accuracy:** Pretrained
+- **Sentiment Analysis Accuracy:** Pretrained
 
 ## Contributing
 
